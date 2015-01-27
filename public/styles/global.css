@@ -1,0 +1,441 @@
+/*
+* --------------------------------------------------------------------------
+* Foundation
+* --------------------------------------------------------------------------
+*/
+*::before, *::after, * {
+  /*
+  Apply a more natural box layout model to all elements. This can be
+  overridden by setting a specific element's `box-sizing:` to `content-box`.
+  */
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+  Establish custom easing function.
+  */
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  margin: 0;
+}
+
+html {
+  /*
+  Prevent fonts from automatically zooming in mobile browsers. A value of
+  `100%` still allows for pinch-zoom input. (`none` disables pinch-zoom.)
+  */
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  /*
+  Basic typography sets the foundation for vertical rhythm and relative size
+  between elements.
+  */
+  font-size: 16px;
+  line-height: 1.5em;
+  vertical-align: baseline;
+  /*
+  Ligagures and kerning are ALL over the place.
+  */
+  text-rendering: optimizeLegibility;
+  -webkit-font-variant-ligatures: common-ligatures discretionary-ligatures;
+  -moz-font-variant-ligatures: common-ligatures discretionary-ligatures;
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "dlig" 1;
+  -moz-font-feature-settings: "kern" 1, "liga" 1, "dlig" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1;
+  -webkit-font-kerning: normal;
+  -moz-font-kerning: normal;
+  font-kerning: normal;
+  /*
+  Chrome and Opera do not support the `auto` value for hyphens:. Chrome does
+  support `none`, however.
+  http://caniuse.com/#feat=css-hyphens
+  */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  /*
+  Render fonts consistently. Without these, fonts flicker in Safari and links
+  get bolder on :hover in Chrome. Need to explore this issue more. Mozilla
+  looks best left alone but shooting for consistency for the time being; this
+  might eventually be a Webkit-specific "fix" if I decide it's okay for
+  Mozilla to render differently.
+  */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+  outline: 0;
+}
+
+button,
+input,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  outline: 0;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  display: none;
+}
+
+
+
+
+
+/*
+* --------------------------------------------------------------------------
+* Global
+* --------------------------------------------------------------------------
+*/
+html,
+body,
+header,
+footer,
+fieldset {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex
+}
+
+html {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1rem;
+  height: 100%;
+  background: #d0dad8;
+  color: #222;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+body {
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin: auto;
+  padding: 0 1rem;
+  width: 66%;
+  min-width: 16rem;
+  max-width: 46rem;
+  background: #fff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+a {
+  border-color: #d0dad8;
+  color: #0e745c;
+  -webkit-transition-duration: .1s;
+          transition-duration: .1s;
+}
+  a:hover,
+  a:active,
+  a:focus {
+    border-color: #0e745c;
+  }
+  a::before {
+  	display: inline-block;
+  	vertical-align: top;
+  	margin-right: .125em;
+    color: #d0dad8;
+    font-family: FontAwesome;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 100;
+    -webkit-transition-duration: .1s;
+            transition-duration: .1s;
+  }
+    a:hover::before,
+    a:active::before,
+    a:focus::before {
+      color: #0e745c;
+    }
+    a[title="Permalink"]::before {
+      content: "\f0c1";
+      line-height: 1.625rem;
+    }
+    address a::before {
+      content: "\f041";
+    }
+    a[href^="mailto:"]::before {
+      content: "\f0e0";
+    }
+    a[href*="facebook.com"]::before {
+      content: "\f09a";
+    }
+    a[href*="twitter.com"]::before {
+      content: "\f099";
+    }
+    a[href*="instagram.com"]::before {
+      content: "\f16d";
+    }
+    a[href*="pinterest.com"]::before {
+      content: "\f0d2";
+    }
+    a[href*="plus.google.com"]::before {
+      content: "\f0d5";
+    }
+    a[href*="youtube.com"]::before {
+      content: "\f167";
+    }
+    a[href*="github.com"]::before {
+      content: "\f09b";
+    }
+
+header,
+footer {
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex: 1 100%;
+  -ms-flex: 1;
+  flex: 1 100%;
+  text-align: center;
+}
+
+header {
+  height: auto;
+  border-bottom: 1px dashed #d0dad8;
+}
+
+h1 {
+  -webkit-flex: 1 100%;
+  -ms-flex: 1;
+  flex: 1 100%;
+  text-align: center;
+  font-family: Oswald, sans-serif;
+  font-size: 2.5rem;
+  line-height: 1em; /* This feels like a hack */
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+h2 {
+  -webkit-flex: 1 100%;
+  -ms-flex: 1;
+  flex: 1 100%;
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+}
+
+header h2 {
+  margin-top: 0;
+}
+
+main {
+  -webkit-flex: 1 100%;
+  -ms-flex: 1;
+  flex: 1 100%;
+  margin: auto;
+}
+
+section + section {
+  margin-top: 1.5rem;
+  border-top: 1px dashed #d0dad8;
+}
+
+form {
+  margin-top: 1.5rem;
+}
+
+fieldset {
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+  fieldset * {
+    width: 100%;
+    margin: auto auto 1.5rem;
+  }
+
+input {
+  -webkit-flex: 1 100%;
+  -ms-flex: 1;
+  flex: 1 100%;
+  padding: .25rem .5rem;
+  border-bottom: 1px solid #d0dad8;
+  background: transparent;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 6rem;
+  margin: 1.5rem auto;
+  padding: .25rem .5rem;
+  border: 1px solid #d0dad8;
+}
+
+  input:hover,
+  input:active,
+  input:focus,
+  textarea:hover,
+  textarea:active,
+  textarea:focus {
+    border-bottom-color: #0e745c;
+    box-shadow: 0 2px 1px -1px #d0dad8;
+  }
+
+button {
+  width: 49%;
+  padding: .5rem 1rem;
+  color: #888;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s
+}
+  [type="submit"] {
+    background: #d0dad8;
+    background-image: -webkit-linear-gradient(left, #0e745c 0%, #0e745c 50%, transparent 50%, transparent 100%);
+    background-image: linear-gradient(to right, #0e745c 0%, #0e745c 50%, transparent 50%, transparent 100%);
+    background-size: 200% 100%;
+    background-position: 100%;
+  }
+  [type="reset"] {
+    float: right;
+
+    background: #FCEDCF;
+    background-image: -webkit-linear-gradient(left, #F7C96E 0%, #F7C96E 50%, transparent 50%, transparent 100%);
+    background-image: linear-gradient(to right, #F7C96E 0%, #F7C96E 50%, transparent 50%, transparent 100%);
+    background-size: 200% 100%;
+    background-position: 100%;
+  }
+  button:hover,
+  button:active,
+  button:focus {
+    color: #fff;
+    background-position: 0%;
+  }
+
+[href="/"] {
+  float: left; /* Admittedly a hack; need to look into why `section` and this link are colliding. */
+  margin: 1rem auto;
+  padding: .5rem 1rem;
+  border: 0;
+  background: #ddd;
+  background-image: -webkit-linear-gradient(left, #888 0%, #888 50%, transparent 50%, transparent 100%);
+  background-image: linear-gradient(to right, #888 0%, #888 50%, transparent 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  color: #888;
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: 0;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s
+}
+  [href="/"]:hover,
+  [href="/"]:active,
+  [href="/"]:focus {
+    color: #fff;
+    background-position: 0%;
+  }
+
+footer {
+  height: 4rem;
+  border-top: 1px dashed #d0dad8;
+}
+  footer p {
+    margin: auto;
+    font-family: Oswald, sans-serif;
+    font-size: .75rem;
+    font-style: italic;
+  }
+
+
+
+
+
+/*
+* --------------------------------------------------------------------------
+* Pint of Sale
+* --------------------------------------------------------------------------
+*/
+
+header h1::before {
+  content: "\f0fc\0020";
+  font-family: FontAwesome;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 100;
+}
+
+footer p a {
+  margin-left: .25em;
+}
+
+button::before,
+[href="/"]::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 100;
+}
+
+[type="submit"]::before {
+  content: "\f218\0020";
+}
+
+[type="reset"]::before {
+  content: "\f021\0020";
+}
+
+[href="/"]::before {
+  content: "\f053";
+  margin-right: .25rem;
+  color: #888;
+}
+
+[href="/"]:hover::before,
+[href="/"]:active::before,
+[href="/"]:focus::before {
+  color: #fff;
+}
+
+[value="delete"] + fieldset button {
+  background: #e5cccd;
+  background-image: -webkit-linear-gradient(left, #d7686a 0%, #d7686a 50%, transparent 50%, transparent 100%);
+  background-image: linear-gradient(to right, #d7686a 0%, #d7686a 50%, transparent 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 100%;
+}
+
+[value="delete"] + fieldset button::before {
+  content: "\f014\0020";
+}
+
+[value="delete"] + fieldset button:hover,
+[value="delete"] + fieldset button:active,
+[value="delete"] + fieldset button:focus {
+  color: #fff;
+  background-position: 0%;
+}
