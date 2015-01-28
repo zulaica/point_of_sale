@@ -1,0 +1,20 @@
+<section>
+  <form action="/purchases" method="post">
+    <fieldset>
+      <table>
+        <% @products.each do |product| %>
+        <tr>
+          <td><input type="checkbox" name="check[]" value="<%= product.id %>"></td>
+          <td><%= product.name %></td>
+          <td>$<%= product.amount %></td>
+        </tr>
+        <% end %>
+      </table>
+    </fieldset>
+    <button type="submit">Calculate total</button>
+    <button type="reset">Clear form</button>
+  </form>
+</section>
+<section>
+  Total:
+</section>

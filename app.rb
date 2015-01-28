@@ -46,3 +46,21 @@ delete('/products/:id') do
   #When the id is deleted, it is not reassigned in the datbase in numberical order
   #E.G. is you delete id=3, id=3 is gone for good, never to be seen again.
 end
+
+get('/purchases') do
+  @products = Product.all()
+  erb(:purchase)
+end
+
+get('/purchases/:id')do
+
+  erb(:purchase)
+end
+
+post('/purchases') do
+  @purchase = Purchase.create()
+  params['check'].each do |check|
+
+  end
+  erb(:purchase)
+end

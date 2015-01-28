@@ -268,7 +268,7 @@ fieldset {
     margin: auto auto 1.5rem;
   }
 
-input {
+input:not([type="checkbox"]) {
   -webkit-flex: 1 100%;
   -ms-flex: 1;
   flex: 1 100%;
@@ -438,4 +438,14 @@ button::before,
 [value="delete"] + fieldset button:focus {
   color: #fff;
   background-position: 0%;
+}
+
+[action="/purchases"] fieldset * {
+  width: auto;
+}
+
+[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
 }

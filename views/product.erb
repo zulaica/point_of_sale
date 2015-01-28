@@ -10,16 +10,15 @@
     <input name="_method" value="patch" hidden>
     <fieldset>
       <legend>Update this product:</legend>
-        <label for="product_name">Product name:</label>
-        <input name="product_name" type="text" value="<%= @product.name %>">
+      <label for="product_name">Product name:</label>
+      <input name="product_name" type="text" value="<%= @product.name %>">
 
-        <label for="product_amount">Product amount:</label>
-        <input name="product_amount" type="text" value="<%= @product.amount %>">
-        </fieldset>
-
-        <button type="submit">Update product</button>
-        <button type="reset">Clear form</button>
+      <label for="product_amount">Product amount:</label>
+      <input name="product_amount" type="text" value="<%= @product.amount %>">
     </fieldset>
+
+    <button type="submit">Update product</button>
+    <button type="reset">Clear form</button>
   </form>
 </section>
 <section>
