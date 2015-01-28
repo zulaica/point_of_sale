@@ -1,6 +1,6 @@
 require("spec_helper")
 
-describe('Purchase') do
+describe("Purchase") do
   it("has many products") do
     product = Product.create({:name => "asdf", :amount => 25.5})
     purchase = Purchase.create({:products => [product]})
